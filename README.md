@@ -2,7 +2,7 @@
 
 Clojure API for smugmug.com [1.2.2] (https://wiki.smugmug.net/display/API/API+1.2.2) JSON interface.
 
-## Usage
+## Example Usage
 
 Here's how you use Tricky Happy Face with [Leiningen] (https://github.com/technomancy/leiningen)
 
@@ -36,6 +36,8 @@ Edit src/trickyhappyface/core.clj:
 Now run it:
 
     $ lein run -m grin.core
+
+## API Notes
 
 Tricky Happy Face translates the [smugmug API] (https://wiki.smugmug.net/display/API/API+1.2.2) into a more clojure friendly naming scheme.
 It removes camelCase/periods and replaces them with dashes.
