@@ -50,6 +50,11 @@ The call smugmug.subcategories.getAll is:
 
 The input of all calls is a the sid returned from login-with-password and possibly a clojure map if needed.
 
+The only exception to this are login-with-password and upload:
+    
+    (login-with-password email password apikey) ;returns sid
+    (upload sid album-id filename) ;returns length of file uploaded
+
 The return of all calls is just a clojure map directly from the JSON that smugmug returns.
 
 ## License
