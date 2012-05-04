@@ -59,6 +59,12 @@ The only exception to this are login-with-password and upload:
     (login-with-password email password apikey) ;returns sid
     (upload sid album-id filename) ;returns length of file uploaded
 
+## TODO
+
+* Test smugmug.login.withHash/smugmug.login.anonymously. 
+* Add progress meter callback for uploads.
+* Add tests.
+* Clean up unused functions.
 
 ## License
 
