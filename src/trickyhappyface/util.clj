@@ -58,7 +58,7 @@
      joinedparams (s/join "&" pairs)
      outurl (str url "?" joinedparams)
     ]
-    (println outurl)
+    ;(println outurl)
     outurl)
 )
 
@@ -81,7 +81,7 @@
       ([sid#] (~func-name sid# {}))
       ([sid# inparams#]
         {:pre [(not (nil? sid#))]}
-        (println "calling" ~method (map? inparams#))
+        ;(println "calling" ~method (map? inparams#))
         (read-url API_END_POINT 
          (merge {:method ~method :SessionID sid#} inparams#))
      )

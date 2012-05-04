@@ -90,7 +90,7 @@
       ;pcnt 0
       ;body (make-byte-counter-stream filename 0 length pcnt)
       ]
-    (println "uploading of size: " (/ length 1000000.) "Mb" filename)
+    ;(println "uploading of size: " (/ length 1000000.) "Mb" filename)
     (client/post API_RAW_UPLOAD_URL {:body body :headers headers :length length})
     length))
 
