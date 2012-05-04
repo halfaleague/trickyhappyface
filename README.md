@@ -37,9 +37,11 @@ Tricky Happy Face translates the [smugmug API] (https://wiki.smugmug.net/display
 It removes camelCase/periods and replaces them with dashes.
 
 The call smugmug.images.get is:
+
     (images-get sid {:AlbumID "an-album-id" :AlbumKey})
 
 The call smugmug.subcategories.getAll is:
+
     (smugmug-subcategories-get-all sid) 
 
 The input of all calls is a the sid returned from login-with-password and possibly a clojure map if needed.
