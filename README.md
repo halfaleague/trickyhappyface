@@ -48,7 +48,7 @@ The call smugmug.images.get is:
 
 The call smugmug.subcategories.getAll is:
 
-    (smugmug-subcategories-get-all sid) 
+    (subcategories-get-all sid) 
 
 The input of all calls is a the sid returned from login-with-password and possibly a clojure map if needed.
 
