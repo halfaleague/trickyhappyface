@@ -1,6 +1,6 @@
 # trickyhappyface
 
-Clojure API for smugmug.com 1.2.2 JSON interface [wiki] (https://wiki.smugmug.net/display/API/API+1.2.2).
+Clojure API for smugmug.com [1.2.2] (https://wiki.smugmug.net/display/API/API+1.2.2) JSON interface.
 
 ## Usage
 

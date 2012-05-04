@@ -3,7 +3,6 @@
   (:use [trickyhappyface.util :only (read-url dasherize)])
   (:use [trickyhappyface.constants :only (API_END_POINT)])
   (:use [clojure.string :only (split)])
-  ;(:use [trickyhappyface.smugmugmethods :only METHODS])
   (:require [trickyhappyface.smugmugmethods :as m])
   )
 
