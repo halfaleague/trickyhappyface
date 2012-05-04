@@ -18,6 +18,10 @@ Add Tricky Happy Face to `project.clj`
       :dependencies [[org.clojure/clojure "1.3.0"]
                     [trickyhappyface "0.0.1"]])
 
+Edit src/trickyhappyface/core.clj:
+
+    (ns grin.core (:require [trickyhappyface.core :as thf]))
+
     (defn -main [& args]
       (let [ email "<your-smugmug-email>"
              apikey "<your-smugmug-api-key-here>" ;you can get this from the smugmug control panel once logged in
