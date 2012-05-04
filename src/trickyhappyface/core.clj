@@ -4,7 +4,11 @@
   (:use [trickyhappyface.constants :only (API_END_POINT)])
   (:use [clojure.string :only (split)])
   (:require [trickyhappyface.smugmugmethods :as m])
+  (:require [trickyhappyface.upload :as thfu])
   )
+
+(defn upload [sid albumId filename]
+  (thfu/upload sid albumId filename))
 
 (defn login-with-password [email password apikey]
   (let 

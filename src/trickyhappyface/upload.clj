@@ -73,7 +73,6 @@
         )
       )))
 
-
 (defn upload [sid albumId filename]
   (let [
     md5 (md5-sum filename)
