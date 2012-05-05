@@ -1,4 +1,4 @@
-(defproject trickyhappyface "0.0.1"
+(defproject trickyhappyface "0.0.2"
   :description "Clojure API for smugmug.com 1.2.2 JSON API"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [clj-http "0.3.0"]

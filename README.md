@@ -16,7 +16,7 @@ Add Tricky Happy Face to `project.clj`
     (defproject grin "1.0.0-SNAPSHOT"
       :description "FIXME: write"
       :dependencies [[org.clojure/clojure "1.3.0"]
-                    [trickyhappyface "0.0.1"]])
+                    [trickyhappyface "0.0.2"]])
 
 Edit src/trickyhappyface/core.clj:
 
