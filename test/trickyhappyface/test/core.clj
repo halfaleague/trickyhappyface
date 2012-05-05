@@ -34,22 +34,14 @@ Honour the charge they made!")
 (defn -calc-pct [s t] (int (* 100. (/ s (float t)))))
 
 (defn -make-callback []
-  (let [
-        rlast-pct 0
-        last-pct (atom rlast-pct)
-        ]
+  (let [rlast-pct 0 last-pct (atom rlast-pct)]
     (fn -callback [b off len
                  cnt file-length]
-      (let [ 
-            pct (-calc-pct cnt file-length)
-            diff (- pct @last-pct)
-            ]
+      (let [pct (-calc-pct cnt file-length)]
         (-print-bar @last-pct pct)
         (reset! last-pct pct)
         (flush)
-        ))
-    )
-  )
+        ))))
 
 (defn -verify-session [info]
   (and (= (info :stat) OK) 
@@ -69,7 +61,7 @@ Honour the charge they made!")
   (fact (let [album (albums-create sid {:Title album-name})
                aid (-> album :Album :id)
                ;{length :length md5 :md5} (upload sid aid filename)
-               {length :length md5 :md5} (upload sid aid filename (-make-callback))
+               {length :length md5 :md5} (upload sid aid filename (-make-callback) #(println))
                dresp (albums-delete sid {:AlbumID aid}) ]
            (dresp :stat)) => OK)
 

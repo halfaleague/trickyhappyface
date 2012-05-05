@@ -23,7 +23,7 @@
 
 
 (defn upload 
-  ([sid album-id filename callback]
+  ([sid album-id filename callback end-callback]
    (let [md5 (md5-sum filename)
         headers {"Content-MD5" md5
                  "Content-Type" "none"
@@ -39,6 +39,7 @@
                  (-read-callback filename length callback))
       ]
     (client/post API_RAW_UPLOAD_URL {:body body :headers headers :length length})
+    (if (not= nil end-callback) (end-callback))
     {:length length :md5 md5})))
   
 ;example

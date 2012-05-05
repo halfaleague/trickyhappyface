@@ -8,8 +8,9 @@
   )
 
 (defn upload 
-  ([sid albumId filename] (thfu/upload sid albumId filename nil))
-  ([sid albumId filename callback] (thfu/upload sid albumId filename callback)))
+  ([sid albumId filename] (thfu/upload sid albumId filename nil nil))
+  ([sid albumId filename callback] (thfu/upload sid albumId filename callback nil))
+  ([sid albumId filename callback end-callback] (thfu/upload sid albumId filename callback end-callback)))
 
 (defn -login-secure [params]
   (let [data (read-url SECURE_API_END_POINT params)
