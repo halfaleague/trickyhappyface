@@ -60,7 +60,7 @@ The only exception to sid/param-map as input and output are login-with-password,
     (login-with-password email password apikey) 
 
     ;returns login map 
-    (login-with-hash email password apikey) ;returns a login map
+    (login-with-hash email password apikey) 
 
     ;returns login map (with only sid)
     (login-anonymously email password apikey) 

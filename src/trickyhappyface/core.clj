@@ -10,7 +10,6 @@
 (defn upload [sid albumId filename]
   (thfu/upload sid albumId filename))
 
-
 (defn -login-secure [params]
   (let [data (read-url SECURE_API_END_POINT params)
         sid (if data (-> data :body)) ]
@@ -34,7 +33,6 @@
                   :UserID userid
                   :PasswordHash phash
                   :method "smugmug.login.withHash"}))
-
 
 (defn -smugmug
   "Method nor sid can be nil"
