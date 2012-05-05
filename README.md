@@ -16,7 +16,7 @@ Add Tricky Happy Face to `project.clj`
     (defproject grin "1.0.0-SNAPSHOT"
       :description "FIXME: write"
       :dependencies [[org.clojure/clojure "1.3.0"]
-                    [trickyhappyface "0.0.2"]])
+                    [trickyhappyface "0.0.3"]])
 
 Edit src/trickyhappyface/core.clj:
 
@@ -67,6 +67,16 @@ The only exception to sid/param-map as input and output are login-with-password,
 
     ;returns {:length :md5}
     (upload sid album-id filename) 
+
+    ;returns {:length :md5}
+    ;provide optional callback function like:
+    ;    (defn -callback [b off len cnt file-length] ... )
+    ;where b is bytes read is segment of bytes just read, 
+    ;offset of bytes read 
+    ;length of bytes read 
+    ;count of bytes read so far
+    ;total filelength
+    (upload sid album-id filename -callback) 
 
 ## TODO
 
