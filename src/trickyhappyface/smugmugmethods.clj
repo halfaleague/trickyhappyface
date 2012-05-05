@@ -68,9 +68,6 @@
   images.uploadFromURL
   images.zoomThumbnail
 
-  login.anonymously
-  login.withHash
-
   logout
 
   printmarks.create

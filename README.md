@@ -54,15 +54,23 @@ The input of all calls is a the sid returned from login-with-password and possib
 
 The return of all calls is just a clojure map directly from the JSON that smugmug returns.
 
-The only exception to this are login-with-password and upload:
+The only exception to sid/param-map as input and output are login-with-password, login-with-hash, login-anonymously and upload:
     
-    (login-with-password email password apikey) ;returns sid
-    (upload sid album-id filename) ;returns length of file uploaded
+    ;returns login map (containing userid/password hash needed for login-with-hash)
+    (login-with-password email password apikey) 
+
+    ;returns login map 
+    (login-with-hash email password apikey) ;returns a login map
+
+    ;returns login map (with only sid)
+    (login-anonymously email password apikey) 
+
+    ;returns {:length :md5}
+    (upload sid album-id filename) 
 
 ## TODO
 
-* Test smugmug.login.withHash/smugmug.login.anonymously. 
-* Add progress meter callback for uploads.
+* Add progress callback for uploads.
 * Add tests.
 * Clean up unused functions.
 

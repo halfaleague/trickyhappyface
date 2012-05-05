@@ -43,8 +43,6 @@
           (throw (new RuntimeException e)))))
 )
 
-;        (format "%1$032x" (new BigInteger 1 (.digest alg)))
-
 (defn urlenc [item] (URLEncoder/encode (str item) "UTF-8"))
 
 (defn urlwithparams
@@ -66,6 +64,7 @@
   "takes a url and get params and returns json content as a map"
   [baseurl getparams]
   (let [url (urlwithparams baseurl getparams)]
+    (println url)
     (client/get url {:as :json})
   )
 )

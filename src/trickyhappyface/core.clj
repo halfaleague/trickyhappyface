@@ -10,15 +10,31 @@
 (defn upload [sid albumId filename]
   (thfu/upload sid albumId filename))
 
-(defn login-with-password [email password apikey]
-  (let 
-    [LOGIN_PARAMS {:APIKey apikey
-                   :EmailAddress email
-                   :Password   password
-                   :method "smugmug.login.withPassword"}
-     data (read-url SECURE_API_END_POINT LOGIN_PARAMS)
-     sid (if data (-> data :body :Login :Session :id)) ]
+
+(defn -login-secure [params]
+  (let [data (read-url SECURE_API_END_POINT params)
+        sid (if data (-> data :body)) ]
+    ;(println data)
     sid))
+
+(defn session-id [data] (-> data :Login :Session :id))
+
+(defn login-with-password [apikey email password]
+  (-login-secure {:APIKey apikey
+                  :EmailAddress email
+                  :Password   password
+                  :method "smugmug.login.withPassword"}))
+
+(defn login-anonymously [apikey]
+  (-login-secure {:APIKey apikey
+                  :method "smugmug.login.anonymously"}))
+
+(defn login-with-hash [apikey userid phash]
+  (-login-secure {:APIKey apikey
+                  :UserID userid
+                  :PasswordHash phash
+                  :method "smugmug.login.withHash"}))
+
 
 (defn -smugmug
   "Method nor sid can be nil"
