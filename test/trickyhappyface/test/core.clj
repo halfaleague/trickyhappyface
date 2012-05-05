@@ -6,6 +6,17 @@
   (:use midje.sweet) 
   )
 
+
+;you need a config.clj to define email password apikey to test
+(load-file "config.clj") 
+(defn login [] (login-with-password apikey email password))
+
+(def filename "data/macke_lady.jpg")
+(def album-name "When can their glory fade?
+O the wild charge they made!
+  All the world wonder'd.
+Honour the charge they made!")
+
 (defn -size-pct [size total-size]
   (int (* 100. (/ size (float total-size)))))
 
@@ -36,16 +47,6 @@
   (and (= (info :stat) OK) 
        (not= (session-id info) nil)
        (= (count (session-id info)) 32)))
-
-;you need a config.clj to define email password apikey to test
-(load-file "config.clj") 
-(defn login [] (login-with-password apikey email password))
-
-(def filename "data/macke_lady.jpg")
-(def album-name "When can their glory fade?
-O the wild charge they made!
-  All the world wonder'd.
-Honour the charge they made!")
 
 (against-background 
   [(around :contents (let [login-info (login)
