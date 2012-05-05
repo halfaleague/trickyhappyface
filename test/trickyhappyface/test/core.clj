@@ -60,14 +60,9 @@ Honour the charge they made!")
   (fact (let [album (albums-create sid {:Title album-name})
                aid (-> album :Album :id)
                {length :length md5 :md5} (upload sid aid filename)
+               {length :length md5 :md5} (upload sid aid filename -callback)
                dresp (albums-delete sid {:AlbumID aid}) ]
            (dresp :stat)) => OK)
 
-   (fact (let [album (albums-create sid {:Title album-name})
-               aid (-> album :Album :id)
-               {length :length md5 :md5} (upload sid aid filename -callback)
-               dresp (albums-delete sid {:AlbumID aid})]
-           (dresp :stat)) => OK)
-    
 ) ;end against-background
 
