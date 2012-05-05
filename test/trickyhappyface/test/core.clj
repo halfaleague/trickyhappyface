@@ -41,6 +41,7 @@
 (load-file "config.clj") 
 (defn login [] (login-with-password apikey email password))
 
+(def filename "data/macke_lady.jpg")
 (def album-name "When can their glory fade?
 O the wild charge they made!
   All the world wonder'd.
@@ -58,19 +59,15 @@ Honour the charge they made!")
  
   (fact (let [album (albums-create sid {:Title album-name})
                aid (-> album :Album :id)
-               {length :length md5 :md5} (upload sid aid "data/macke_lady.jpg")
-               dresp (albums-delete sid {:AlbumID aid})
-               ]
-           (dresp :stat)) => OK
-         )
+               {length :length md5 :md5} (upload sid aid filename)
+               dresp (albums-delete sid {:AlbumID aid}) ]
+           (dresp :stat)) => OK)
 
    (fact (let [album (albums-create sid {:Title album-name})
                aid (-> album :Album :id)
-               {length :length md5 :md5} (upload sid aid "data/macke_lady.jpg" -callback)
-               dresp (albums-delete sid {:AlbumID aid})
-               ]
-           (dresp :stat)) => OK
-         )
+               {length :length md5 :md5} (upload sid aid filename -callback)
+               dresp (albums-delete sid {:AlbumID aid})]
+           (dresp :stat)) => OK)
     
 ) ;end against-background
 
