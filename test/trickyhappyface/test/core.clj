@@ -22,6 +22,7 @@
         pct (atom rpct)
         ]
 
+  (println "-callback" cnt @pct)
     (if (= (-size-pct cnt file-length) @pct)
       (-print-bar pct))
 
@@ -40,6 +41,11 @@
 (load-file "config.clj") 
 (defn login [] (login-with-password apikey email password))
 
+(def album-name "When can their glory fade?
+O the wild charge they made!
+  All the world wonder'd.
+Honour the charge they made!")
+
 (against-background 
   [(around :contents (let [loginInfo (login)
                            userid (-> loginInfo :Login :User :id)
@@ -49,6 +55,22 @@
   (fact (-verify-session loginInfo))
   (fact (-verify-session (login-anonymously apikey)))
   (fact (-verify-session (login-with-hash apikey userid phash)))
+ 
+  (fact (let [album (albums-create sid {:Title album-name})
+               aid (-> album :Album :id)
+               {length :length md5 :md5} (upload sid aid "data/macke_lady.jpg")
+               dresp (albums-delete sid {:AlbumID aid})
+               ]
+           (dresp :stat)) => OK
+         )
 
+   (fact (let [album (albums-create sid {:Title album-name})
+               aid (-> album :Album :id)
+               {length :length md5 :md5} (upload sid aid "data/macke_lady.jpg" -callback)
+               dresp (albums-delete sid {:AlbumID aid})
+               ]
+           (dresp :stat)) => OK
+         )
+    
 ) ;end against-background
 

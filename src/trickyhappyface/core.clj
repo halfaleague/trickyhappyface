@@ -7,8 +7,9 @@
   (:require [trickyhappyface.upload :as thfu])
   )
 
-(defn upload [sid albumId filename]
-  (thfu/upload sid albumId filename))
+(defn upload 
+  ([sid albumId filename] (thfu/upload sid albumId filename nil))
+  ([sid albumId filename callback] (thfu/upload sid albumId filename callback)))
 
 (defn -login-secure [params]
   (let [data (read-url SECURE_API_END_POINT params)

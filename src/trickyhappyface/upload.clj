@@ -17,14 +17,15 @@
     (proxy [java.io.FileInputStream] [filename]
       (read
         ([b off len] 
+          (println "-read-callback")
           (swap! cnt #(+ len %1))
           (callback b off len @cnt length)
           (proxy-super read b off len))))))
 
+
 (defn upload 
-  ([sid album-id filename] (upload sid album-id nil))
   ([sid album-id filename callback]
-  (let [md5 (md5-sum filename)
+   (let [md5 (md5-sum filename)
         headers {"Content-MD5" md5
                  "Content-Type" "none"
                  "X-Smug-AlbumID" (str album-id)
@@ -40,7 +41,7 @@
       ]
     (client/post API_RAW_UPLOAD_URL {:body body :headers headers :length length})
     {:length length :md5 md5})))
-
+  
 ;example
 ;(client/post "http://site.com/resources"
 ;             {:body (clojure.java.io/input-stream "/tmp/foo") :length 1000})
