@@ -48,12 +48,12 @@ O the wild charge they made!
 Honour the charge they made!")
 
 (against-background 
-  [(around :contents (let [loginInfo (login)
-                           userid (-> loginInfo :Login :User :id)
-                           phash (-> loginInfo :Login :PasswordHash)
-                           sid (session-id loginInfo)] ?form ))]
+  [(around :contents (let [login-info (login)
+                           userid (-> login-info :Login :User :id)
+                           phash (-> login-info :Login :PasswordHash)
+                           sid (session-id login-info)] ?form ))]
 
-  (fact (-verify-session loginInfo))
+  (fact (-verify-session login-info))
   (fact (-verify-session (login-anonymously apikey)))
   (fact (-verify-session (login-with-hash apikey userid phash)))
  
