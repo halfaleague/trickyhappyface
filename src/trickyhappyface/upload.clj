@@ -17,7 +17,6 @@
     (proxy [java.io.FileInputStream] [filename]
       (read
         ([b off len] 
-          (println "-read-callback")
           (swap! cnt #(+ len %1))
           (callback b off len @cnt length)
           (proxy-super read b off len))))))
