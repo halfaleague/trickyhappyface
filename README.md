@@ -68,19 +68,19 @@ The only exception to sid/param-map as input and output are login-with-password,
     ;returns {:length :md5}
     (upload sid album-id filename) 
 
-    ;returns {:length :md5}
-    ;provide optional callback function like:
-    ;    (defn -callback [b off len cnt file-length] ... )
-    ;where b is bytes read is segment of bytes just read, 
-    ;offset of bytes read 
-    ;length of bytes read 
-    ;count of bytes read so far
-    ;total filelength
+    ;upload returns {:length :md5}
     (upload sid album-id filename -callback) 
+
+    ;upload provide optional callback function like:
+    ;  (defn -callback [b off len cnt file-length] ... )
+    ;       b is bytes read is segment of bytes just read, 
+    ;       off is offset of bytes read 
+    ;       len is length of bytes read 
+    ;       cnt is count of bytes read so far
+    ;       file-length is total filelength
 
 ## TODO
 
-* Add progress callback for uploads.
 * Add tests.
 * Clean up unused functions.
 
