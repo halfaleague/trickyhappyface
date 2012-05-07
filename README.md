@@ -72,8 +72,6 @@ The only exception to sid/param-map as input and output are login-with-password,
     (upload sid album-id filename) 
     ;or
     (upload sid album-id filename -callback) 
-    ;or 
-    (upload sid album-id filename -callback) 
 
     ;upload provide optional callback function like:
     ;  (defn -callback [b off len cnt file-length] ... )
@@ -86,7 +84,7 @@ The only exception to sid/param-map as input and output are login-with-password,
 ## TODO
 
 * Add tests.
-* Clean up unused functions.
+* Smugmug 1.3.0 (oauth)
 
 ## License
 
