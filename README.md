@@ -2,6 +2,10 @@
 
 Clojure API for smugmug.com [1.2.2] (https://wiki.smugmug.net/display/API/API+1.2.2) JSON interface.
 
+## Quick Usage
+
+Add [trickyhappyface "0.0.3"] to Leiningen.
+
 ## Example Usage
 
 Here's how you use Tricky Happy Face with [Leiningen] (https://github.com/technomancy/leiningen)
