@@ -26,7 +26,7 @@ Edit src/trickyhappyface/core.clj:
       (let [ email "<your-smugmug-email>"
              apikey "<your-smugmug-api-key-here>" ;you can get this from the smugmug control panel once logged in
              password "<your-smugmug-password-here>"
-             sid (thf/login-with-password email password apikey)
+             sid (thf/session-id (thf/login-with-password email password apikey)) ; session-id is a helper function to extract the sid
              album-resp (thf/albums-get sid)
              albums (album-resp :Albums)
              titles (map #(get %1 :Title) albums)]
@@ -71,6 +71,8 @@ The only exception to sid/param-map as input and output are login-with-password,
     ;upload returns {:length :md5}
     (upload sid album-id filename) 
     ;or
+    (upload sid album-id filename -callback) 
+    ;or 
     (upload sid album-id filename -callback) 
 
     ;upload provide optional callback function like:

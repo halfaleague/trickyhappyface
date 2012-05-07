@@ -42,6 +42,3 @@
     (if (not= nil end-callback) (end-callback))
     {:length length :md5 md5})))
   
-;example
-;(client/post "http://site.com/resources"
-;             {:body (clojure.java.io/input-stream "/tmp/foo") :length 1000})
